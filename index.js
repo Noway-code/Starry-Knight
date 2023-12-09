@@ -7,7 +7,7 @@ const key = process.env.API_SECRET;
 const date = moment().format("YYYY-MM-DD");
 //Hashing function
 const authString = btoa(`${val}:${key}`);
-
+//write
 // Body Content
 let starData = JSON.stringify({
     "observer": {
