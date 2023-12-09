@@ -8,6 +8,7 @@ const date = moment().format("YYYY-MM-DD");
 //Hashing function
 const authString = btoa(`${val}:${key}`);
 //write
+console.log(date);
 // Body Content
 let starData = JSON.stringify({
     "observer": {
