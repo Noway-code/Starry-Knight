@@ -1,4 +1,5 @@
-Personal Project to practice utilizing API's, HTML, and Node.js.
-
+## starryKnight
 Discord bot that gives daily updates on the star chart above the University of Central Florida campus.
 (our mascots a knight)
+
+Personal Project to practice utilizing API's, HTML, and Node.js.
