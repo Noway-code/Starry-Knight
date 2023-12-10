@@ -9,6 +9,21 @@ const date = moment().format("YYYY-MM-DD");
 const authString = btoa(`${val}:${key}`);
 //write
 console.log(date);
+
+const express = require('express');
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+    // Send the HTML file as a response when a GET request is made to "/"
+    res.sendFile(__dirname + '/index.html');
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is listening at http://localhost:${port}`);
+});
+
+
 // Body Content
 let starData = JSON.stringify({
     "observer": {
