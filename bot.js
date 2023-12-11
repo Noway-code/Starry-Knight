@@ -1,4 +1,5 @@
 require('dotenv').config();
+const axios = require('axios');
 
 /* The fs
 module is Node's native file system module. fs is used to read the commands directory and identify our command files.
@@ -19,6 +20,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Command Handler
 client.commands = new Collection();
+client.cooldowns = new Collection();
 
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
