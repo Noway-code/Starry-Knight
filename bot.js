@@ -12,19 +12,23 @@ class extends JavaScript's native Map class, and includes more extensive, useful
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const moment = require("moment");
+const schedule = require('node-schedule');
 const token = process.env.DISCORD_TOKEN;
+const channelId = process.env.DISCORD_CHANNEL_ID;
 
 // Create a new client instance
+let userSetTime = "00:04";
+
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
-
 // Command Handler
 client.commands = new Collection();
+
 client.cooldowns = new Collection();
-
 const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
 
+const commandFolders = fs.readdirSync(foldersPath);
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -38,12 +42,12 @@ for (const folder of commandFolders) {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
     }
-}
 
+}
 // Connects to event handler
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
     const event = require(filePath);
@@ -52,7 +56,22 @@ for (const file of eventFiles) {
     } else {
         client.on(event.name, (...args) => event.execute(...args));
     }
+
+}
+// Log in to Discord with your client's token
+
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}`);
+    scheduleDaily();
+});
+
+function scheduleDaily() {
+    // Schedule the job to run every day at the specified time
+    schedule.scheduleJob(`0 ${userSetTime.split(':')[1]} ${userSetTime.split(':')[0]} * * *`, () => {
+        const dailyStars = require('./automated/dailyStars');
+        dailyStars(client, channelId);
+    });
+
 }
 
-// Log in to Discord with your client's token
 client.login(token);
