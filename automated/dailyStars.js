@@ -37,10 +37,7 @@ let starChart = {
     data : starData
 };
 
-let apiCallMade = false;
-
 async function fetchStarChart(client, channelId) {
-    if (!apiCallMade) {
         try {
             const response = await axios.request(starChart);
             const channel = await client.channels.fetch(channelId);
@@ -54,7 +51,6 @@ async function fetchStarChart(client, channelId) {
             const channel = await client.channels.fetch(channelId);
             channel.send('Error fetching star chart: ' + error.message);
         }
-    }
 }
 
 module.exports = fetchStarChart;

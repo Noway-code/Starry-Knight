@@ -57,7 +57,7 @@ module.exports = {
             const imageUrl = response.data.data.imageUrl;
 
             // Use interaction.followUp to reply and include the star chart data
-            await interaction.followUp(`Star Chart for UCF tonight: ${imageUrl}`);
+            await interaction.followUp({ content: 'Star Chart for UCF tonight:', files: [imageUrl] });
         } catch (error) {
             console.error(error);
             // Handle the error and reply with an error message

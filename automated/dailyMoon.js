@@ -36,11 +36,9 @@ let moonPhase = {
     data: moonData
 };
 
-let apiCallMade = false;
 // Could be improved with DRY principle cause there's 4 different API calls depending on situation
 // but this functions well so im good with it.
 async function fetchStarChart(client, channelId) {
-    if (!apiCallMade) {
         try {
             const response = await axios.request(moonPhase);
             const channel = await client.channels.fetch(channelId);
@@ -48,13 +46,12 @@ async function fetchStarChart(client, channelId) {
             // Send the image directly using the 'file' option
             channel.send({ content: 'Moon Phases for UCF tonight:', files: [response.data.data.imageUrl] });
 
-            apiCallMade = true;
+
         } catch (error) {
             console.error(error);
             const channel = await client.channels.fetch(channelId);
             channel.send('Error fetching moon chart: ' + error.message);
         }
-    }
 }
 module.exports = fetchStarChart;
 
