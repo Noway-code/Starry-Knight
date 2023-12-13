@@ -18,8 +18,7 @@ const token = process.env.DISCORD_TOKEN;
 const channelId = process.env.DISCORD_CHANNEL_ID;
 
 // Create a new client instance
-let userSetTime = "19:05";
-
+let userSetTime = "20:32";
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 // Command Handler
@@ -42,7 +41,6 @@ for (const folder of commandFolders) {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
     }
-
 }
 // Connects to event handler
 const eventsPath = path.join(__dirname, 'events');

@@ -10,7 +10,7 @@ const date = moment().format("YYYY-MM-DD");
 const authString = btoa(`${val}:${key}`);
 
 module.exports = {
-    cooldown: 500,
+    cooldown: 10,
     data: new SlashCommandBuilder()
         .setName('moonphase')
         .setDescription('Returns the moonphase for the day'),
