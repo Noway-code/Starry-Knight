@@ -44,7 +44,10 @@ async function fetchStarChart(client, channelId) {
         try {
             const response = await axios.request(starChart);
             const channel = await client.channels.fetch(channelId);
-            channel.send(`Star Chart for UCF tonight: ${response.data.data.imageUrl}`);
+
+            // Send the image to the Discord channel
+            channel.send({ content: 'Star Chart for UCF tonight:', files: [response.data.data.imageUrl] });
+
             apiCallMade = true;
         } catch (error) {
             console.error(error);
@@ -53,9 +56,5 @@ async function fetchStarChart(client, channelId) {
         }
     }
 }
-
-module.exports = fetchStarChart;
-
-
 
 module.exports = fetchStarChart;

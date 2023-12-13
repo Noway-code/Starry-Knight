@@ -18,7 +18,7 @@ const token = process.env.DISCORD_TOKEN;
 const channelId = process.env.DISCORD_CHANNEL_ID;
 
 // Create a new client instance
-let userSetTime = "00:04";
+let userSetTime = "19:05";
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -69,7 +69,9 @@ function scheduleDaily() {
     // Schedule the job to run every day at the specified time
     schedule.scheduleJob(`0 ${userSetTime.split(':')[1]} ${userSetTime.split(':')[0]} * * *`, () => {
         const dailyStars = require('./automated/dailyStars');
+        const dailyMoon = require('./automated/dailyMoon');
         dailyStars(client, channelId);
+        dailyMoon(client, channelId);
     });
 
 }
