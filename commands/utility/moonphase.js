@@ -18,8 +18,6 @@ module.exports = {
         // Acknowledge the interaction to avoid "InteractionNotReplied" error
         await interaction.deferReply();
 
-        // Date formatting for the observer's date
-        const date = new Date().toISOString();
 
         let moonData = JSON.stringify({
             "format": "png",

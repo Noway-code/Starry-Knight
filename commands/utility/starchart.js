@@ -30,25 +30,24 @@ module.exports = {
             await interaction.followUp({ content: 'Star Chart for UCF tonight:', files: [cachedStarChart] });
         } else {
             // Date formatting for the observer's date
-            const date = new Date().toISOString();
 
             let starData = JSON.stringify({
-                "observer": {
-                    "date": date,
-                    "latitude": 28.5966398,
-                    "longitude": -81.2048381
-                },
                 "style": "navy",
+                "observer": {
+                    "latitude": 28.5966398,
+                    "longitude": -81.2048381,
+                    "date": "2021-11-02"
+                },
                 "view": {
                     "type": "area",
                     "parameters": {
                         "position": {
                             "equatorial": {
-                                "rightAscension": 14.83,
-                                "declination": -15.23
+                                "rightAscension": 0,
+                                "declination": 0
                             }
                         },
-                        "zoom": 3
+                        "zoom": 2
                     }
                 }
             });
