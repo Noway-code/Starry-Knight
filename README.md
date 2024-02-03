@@ -1,5 +1,8 @@
 # UCF Astronomy Discord Bot
 
+### 🛠️ This project is on temporary hiatus, check out my [github](https://github.com/Noway-code/) to see what i'm working on now.
+- This project was fun so I do still want to return later on and add more functionality.
+
 ## Overview
 
 The unofficial UCF Astronomy Discord Bot is a simple Discord bot built with Discord.js that provides daily updates on constellations and the moon phase above the University of Central Florida (UCF) campus. Users can easily request star charts and moon phases by using convenient slash commands.
